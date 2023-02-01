@@ -51,6 +51,7 @@ const Test = () => {
   return (
     <>
       <h3>{country}</h3>
+      <p>Touch a poster image to find watch options</p>
       <div className="movie-grid">
         {movies.length
           ? movies.map((movie) => {
@@ -114,7 +115,7 @@ const Test = () => {
                     >
                       &#9654;
                     </div>
-                    <p style={{ marginLeft: '3px' }}>Find on YouTube</p>
+                    <p style={{ margin: '5px 0 0 5px' }}>Find on YouTube</p>
                   </div>
                 </div>
               );
