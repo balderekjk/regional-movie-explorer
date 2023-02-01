@@ -1443,14 +1443,14 @@
   },
   {
     "name": "Scotland",
-    "code": "ce",
+    "code": "gb",
     "language": [{ "name": "Scottish Gaelic", "code": "gd" }],
     "latitude": 56.5,
     "longitude": -4.2
   },
   {
     "name": "Wales",
-    "code": "wa",
+    "code": "gb",
     "language": [{ "name": "Welsh", "code": "cy" }],
     "latitude": 52.1,
     "longitude": -3.8
