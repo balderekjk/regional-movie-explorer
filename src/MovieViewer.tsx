@@ -82,7 +82,7 @@ const Test = () => {
                   <p
                     style={{
                       marginTop: '3px',
-                      height: '45px',
+                      height: '46px',
                       overflowY: 'auto',
                       width: '200px',
                       padding: '1px',

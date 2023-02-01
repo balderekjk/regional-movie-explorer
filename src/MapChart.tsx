@@ -13,12 +13,13 @@ const geoUrl =
 
 export default function MapChart() {
   let navigate = useNavigate();
-  const [selectCountry, setSelectCountry] = useState('Afghanistan');
+  const [selectCountry, setSelectCountry] = useState('af');
   return (
     <>
       <div style={{ width: '100vw' }}>
         <p>Swipe/scroll to the right to see full map</p>
-        <p>Click a region/name. Zoom-in helps.</p>
+        <p>Click a region/name. Zoom-in helps...</p>
+        <p>But, Zoom-out necessary on next page.</p>
         <div style={{ marginTop: '5px' }}>
           <label htmlFor="countries">Alternatively: </label>
           <select
