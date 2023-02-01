@@ -29,6 +29,14 @@ const Test = () => {
       setApiEndpoint(
         `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&with_keywords=12354&page=${page}&sort_by=vote_count.desc`
       );
+    } else if (code === 'au') {
+      setApiEndpoint(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=193455&page=${page}&sort_by=vote_count.desc`
+      );
+    } else if (code === 'ca') {
+      setApiEndpoint(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1329&page=${page}&sort_by=vote_count.desc`
+      );
     } else {
       code &&
         setApiEndpoint(
