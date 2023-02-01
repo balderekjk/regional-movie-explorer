@@ -420,6 +420,13 @@
     "longitude": 38
   },
   {
+    "name": "Falkland Islands",
+    "code": "fk",
+    "language": [{ "name": "English", "code": "en" }],
+    "latitude": -51.8,
+    "longitude": -59.5
+  },
+  {
     "name": "Fiji",
     "code": "fj",
     "language": [{ "name": "English", "code": "en" }],
