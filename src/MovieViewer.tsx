@@ -37,10 +37,18 @@ const Test = () => {
       setApiEndpoint(
         `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1329&page=${page}&sort_by=vote_count.desc`
       );
+    } else if (code === 'ed') {
+      setApiEndpoint(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=392&vote_count.lte=5340&page=${page}&sort_by=vote_count.desc`
+      );
+    } else if (code === 'ur') {
+      setApiEndpoint(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=7005&vote_count.lte=4500&page=${page}&sort_by=vote_count.desc`
+      );
     } else {
       code &&
         setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&vote_count.lte=3000&page=${page}&sort_by=vote_count.desc`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&vote_count.lte=715&page=${page}&sort_by=vote_count.desc`
         );
     }
     apiEndpoint &&

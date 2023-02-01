@@ -1428,11 +1428,32 @@
     "longitude": 54
   },
   {
-    "name": "United Kingdom",
-    "code": "gb",
+    "name": "England",
+    "code": "ed",
     "language": [{ "name": "English", "code": "en" }],
-    "latitude": 54,
-    "longitude": -2
+    "latitude": 52.4,
+    "longitude": -1.2
+  },
+  {
+    "name": "Northern Ireland",
+    "code": "ur",
+    "language": [{ "name": "English", "code": "en" }],
+    "latitude": 54.8,
+    "longitude": -6.5
+  },
+  {
+    "name": "Scotland",
+    "code": "ce",
+    "language": [{ "name": "Scottish Gaelic", "code": "gd" }],
+    "latitude": 56.5,
+    "longitude": -4.2
+  },
+  {
+    "name": "Wales",
+    "code": "wa",
+    "language": [{ "name": "Welsh", "code": "cy" }],
+    "latitude": 52.1,
+    "longitude": -3.8
   },
   {
     "name": "United States of America",
