@@ -23,7 +23,7 @@ const Test = () => {
       );
     } else if (code === 'hw') {
       setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_keywords=235363&&page=${page}sort_by=release_date.desc`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_keywords=235363&page=${page}&sort_by=release_date.desc`
       );
     } else if (code === 'hk') {
       setApiEndpoint(
@@ -88,7 +88,7 @@ const Test = () => {
                       padding: '1px',
                     }}
                   >
-                    <strong>{movie.title}</strong> ({year})
+                    <strong>{movie.title}</strong> ({year ? year : '?'})
                   </p>
                   <PercentBar percent={movie['vote_average'] * 10} />
                   <div
