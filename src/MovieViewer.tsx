@@ -94,7 +94,9 @@ const Test = () => {
                   <div
                     onClick={() => {
                       window.open(
-                        `https://www.youtube.com/results?search_query=${movie['original_title']}+${year}`
+                        `https://www.youtube.com/results?search_query=${movie[
+                          'original_title'
+                        ].replace(/&|\+/g, 'and')}+${year}`
                       );
                     }}
                     style={{

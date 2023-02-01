@@ -7,13 +7,6 @@
     "longitude": 65
   },
   {
-    "name": "Aland Islands",
-    "code": "ax",
-    "language": [{ "name": "Swedish", "code": "sv" }],
-    "latitude": 33,
-    "longitude": 65
-  },
-  {
     "name": "Albania",
     "code": "al",
     "language": [{ "name": "Albanian", "code": "sq" }],
