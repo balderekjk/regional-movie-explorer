@@ -27,7 +27,7 @@ const Test = () => {
       );
     } else if (code === 'hk') {
       setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&with_keywords=12354&page=${page}&sort_by=vote_count.desc`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&page=${page}&sort_by=vote_count.desc`
       );
     } else if (code === 'au') {
       setApiEndpoint(
@@ -40,7 +40,7 @@ const Test = () => {
     } else {
       code &&
         setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&vote_count.lte=278&page=${page}&sort_by=vote_count.desc`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&vote_count.lte=3000&page=${page}&sort_by=vote_count.desc`
         );
     }
     apiEndpoint &&

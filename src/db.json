@@ -562,7 +562,7 @@
   {
     "name": "Hong Kong",
     "code": "hk",
-    "language": [{ "name": "Chinese", "code": "zh" }],
+    "language": [{ "name": "Cantonese", "code": "cn" }],
     "latitude": 22.3,
     "longitude": 114.2
   },
@@ -1362,7 +1362,7 @@
     "code": "to",
     "language": [{ "name": "Tongan", "code": "to" }],
     "latitude": -20,
-    "longitude": -175
+    "longitude": -150
   },
   {
     "name": "Trinidad and Tobago",
