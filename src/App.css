@@ -1,0 +1,125 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: Noto Sans, serif;
+}
+
+.App {
+  width: fit-content;
+  background: linear-gradient(to bottom, skyblue, rgb(255, 255, 169));
+  min-height: 100vh;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.rsm-svg {
+  display: flex;
+  width: 1500px;
+}
+
+button {
+  width: fit-content;
+}
+
+p,
+h2,
+h3 {
+  margin: 0;
+}
+
+a {
+  all: unset;
+}
+
+text {
+  fill: hsla(0, 0%, 0%, 1);
+  font-size: 1.5px;
+  background: hsl(137, 71%, 63%);
+  cursor: pointer;
+}
+
+text:hover {
+  fill: black;
+  font-size: 8px;
+}
+
+.movie-grid {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  justify-content: center;
+  align-items: end;
+  gap: 20px;
+}
+
+.movie-grid > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: hsl(0, 0%, 97%);
+  outline: 1px solid black;
+  border-radius: 5px;
+  padding-bottom: 0.7em;
+}
+
+.movie-grid img {
+  display: block;
+  cursor: pointer;
+  max-width: 200px;
+  max-height: 300px;
+}
+
+.percent-bar {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 3px;
+  margin-top: 5px;
+  border: 1px solid blue;
+  width: 90%;
+  height: 20px;
+  color: darkorange;
+  font-size: 14px;
+}
+
+.movie-description {
+  text-align: left;
+  position: relative;
+  bottom: 100px;
+  height: 100px;
+  width: 200px;
+  margin-bottom: -100px;
+  overflow-y: auto;
+  padding: 1ch 0 0 1ch;
+}
+
+.movie-description::-webkit-scrollbar-thumb {
+  background: hsla(0, 0%, 50%, 0.7);
+  outline: 1px solid white;
+}
+
+.movie-description::-webkit-scrollbar {
+  display: block;
+  border: 1px solid grey;
+}
+
+.movie-description {
+  color: hsl(0, 0%, 98%);
+  background: hsl(0, 0%, 0%, 0.8);
+}
+
+.nav-buttons > button {
+  border-radius: 30%;
+  font-size: 20px;
+  border: 1px solid blue;
+  background: blue;
+  color: white;
+  cursor: pointer;
+  padding: 2px 12px;
+}
