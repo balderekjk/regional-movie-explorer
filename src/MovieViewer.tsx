@@ -25,7 +25,7 @@ const MovieViewer = () => {
         setApiEndpoint(
           `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=9322&page=${page}&sort_by=vote_count.desc`
         );
-      } else if (code === 'hw') {
+      } else if (language === 'hw') {
         setApiEndpoint(
           `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_keywords=235363&page=${page}&sort_by=release_date.desc`
         );
@@ -56,10 +56,17 @@ const MovieViewer = () => {
           );
       }
     } else {
-      code &&
-        setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&page=${page}&sort_by=vote_count.desc`
-        );
+      if (language === 'hw') {
+        code &&
+          setApiEndpoint(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1668&page=${page}&sort_by=release_date.desc`
+          );
+      } else {
+        code &&
+          setApiEndpoint(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&page=${page}&sort_by=vote_count.desc`
+          );
+      }
     }
     apiEndpoint &&
       axios
@@ -237,15 +244,20 @@ const MovieViewer = () => {
             onClick={() => {
               if (!isEdit) {
                 setPage(page + 1);
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
               } else {
                 setIsEdit(false);
                 setPage(pendingPage);
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
               }
-              window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth',
-              });
             }}
           >
             {!isEdit ? '>' : <div style={{ fontSize: '15px' }}>&#x2713;</div>}
