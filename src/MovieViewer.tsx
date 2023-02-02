@@ -65,19 +65,26 @@ const MovieViewer = () => {
       axios
         .get(apiEndpoint)
         .then((res) => {
-          setTotalPages(+res.data['total_pages']);
+          if (+res.data['total_pages'] > 500) {
+            setTotalPages(500);
+          } else {
+            setTotalPages(+res.data['total_pages']);
+          }
           if (res.data.results.length) {
             setMovies(res.data.results);
           } else {
             setStatus('No movies...');
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err.response.data.errors));
   }, [isStart, apiEndpoint, page]);
   return (
     <>
       <h3>{country}</h3>
       <p>Touch a poster image to find watch options</p>
+      <p>The {'<<'} button lifts language and keyword filters</p>
+      <p>The &#x2693; button resets to initial filters</p>
+      <p></p>
       <div className="movie-grid">
         {movies.length
           ? movies.map((movie) => {
@@ -224,7 +231,7 @@ const MovieViewer = () => {
             '...'
           )}
         </p>
-        {page !== totalPages && (
+        {page < totalPages && (
           <button
             style={{ background: isEdit ? '#4BB543' : 'blue' }}
             onClick={() => {
