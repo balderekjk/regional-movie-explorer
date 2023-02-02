@@ -4,11 +4,13 @@ import axios from 'axios';
 import poster from './assets/no_poster.jpg';
 import PercentBar from './PercentBar';
 
-const Test = () => {
+const MovieViewer = () => {
   const [movies, setMovies] = useState<any[]>([]);
   const [status, setStatus] = useState('Loading...');
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
+  const [pendingPage, setPendingPage] = useState(0);
+  const [isEdit, setIsEdit] = useState(false);
   const [isStart, setIsStart] = useState(false);
   const [apiEndpoint, setApiEndpoint] = useState('');
   const { country, code, language } = useParams();
@@ -189,12 +191,49 @@ const Test = () => {
           </button>
         )}
         <p>
-          {page}/{totalPages ? totalPages : '...'}
+          {isEdit ? (
+            <input
+              onChange={(e) => setPendingPage(+e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setPage(pendingPage);
+                  setIsEdit(false);
+                  window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth',
+                  });
+                }
+              }}
+              type="number"
+              style={{ width: '42px' }}
+              defaultValue={page}
+              autoFocus
+            />
+          ) : (
+            <div className="pseudo-input" onClick={() => setIsEdit(true)}>
+              {page}
+            </div>
+          )}{' '}
+          /
+          {totalPages ? (
+            <div style={{ display: 'inline-block', fontSize: '15px' }}>
+              {totalPages}
+            </div>
+          ) : (
+            '...'
+          )}
         </p>
         {page !== totalPages && (
           <button
+            style={{ background: isEdit ? '#4BB543' : 'blue' }}
             onClick={() => {
-              setPage(page + 1);
+              if (!isEdit) {
+                setPage(page + 1);
+              } else {
+                setIsEdit(false);
+                setPage(pendingPage);
+              }
               window.scroll({
                 top: 0,
                 left: 0,
@@ -202,28 +241,36 @@ const Test = () => {
               });
             }}
           >
-            {'>'}
+            {!isEdit ? '>' : <div style={{ fontSize: '15px' }}>&#x2713;</div>}
           </button>
         )}
         <button
-          style={{ background: 'lightblue' }}
+          style={{ background: isEdit ? 'red' : 'lightblue' }}
           onClick={() => {
             {
-              setPage(1);
-              setIsStart(false);
-              window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth',
-              });
+              if (!isEdit) {
+                setPage(1);
+                setIsStart(false);
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
+              } else {
+                setIsEdit(false);
+              }
             }
           }}
         >
-          &#x2693;
+          {!isEdit ? (
+            <>&#x2693;</>
+          ) : (
+            <div style={{ padding: '2px 7px' }}>X</div>
+          )}
         </button>
       </div>
     </>
   );
 };
 
-export default Test;
+export default MovieViewer;

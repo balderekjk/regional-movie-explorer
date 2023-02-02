@@ -1,7 +1,7 @@
 import './App.css';
 import MapChart from './MapChart';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import Test from './MovieViewer';
+import MovieViewer from './MovieViewer';
 
 function App() {
   let navigate = useNavigate();
@@ -15,7 +15,7 @@ function App() {
       </h2>
       <Routes>
         <Route path="/" element={<MapChart />} />
-        <Route path=":country/:code/:language" element={<Test />} />
+        <Route path=":country/:code/:language" element={<MovieViewer />} />
       </Routes>
     </div>
   );

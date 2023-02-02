@@ -49,6 +49,12 @@ text:hover {
   font-size: 8px;
 }
 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .movie-grid {
   margin-top: 1em;
   display: grid;
@@ -114,10 +120,27 @@ text:hover {
   background: hsl(0, 0%, 0%, 0.8);
 }
 
+.pseudo-input {
+  display: inline-block;
+  border: 1px solid hsla(240, 100%, 40%, 0.5);
+  background: white;
+  padding-left: 3px;
+  width: 42px;
+  border-radius: 4px;
+  cursor: text;
+  font-size: 13px;
+  text-align: left;
+  box-shadow: 0px 0px 5px 1px hsl(240, 100%, 70%);
+}
+
+.pseudo-input:hover {
+  background: hsl(0, 0%, 92%);
+}
+
 .nav-buttons > button {
   border-radius: 30%;
   font-size: 20px;
-  border: 1px solid blue;
+  border-width: 0px;
   background: blue;
   color: white;
   cursor: pointer;
