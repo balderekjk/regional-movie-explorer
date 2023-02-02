@@ -9,53 +9,61 @@ const Test = () => {
   const [status, setStatus] = useState('Loading...');
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
+  const [isStart, setIsStart] = useState(false);
   const [apiEndpoint, setApiEndpoint] = useState('');
   const { country, code, language } = useParams();
   const key = import.meta.env.VITE_TMDB_API_KEY;
   useEffect(() => {
-    if (code === 'sg') {
-      setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=4224&page=${page}&sort_by=vote_count.desc`
-      );
-    } else if (code === 'tw') {
-      setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=9322&page=${page}&sort_by=vote_count.desc`
-      );
-    } else if (code === 'hw') {
-      setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_keywords=235363&page=${page}&sort_by=release_date.desc`
-      );
-    } else if (code === 'hk') {
-      setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&page=${page}&sort_by=vote_count.desc`
-      );
-    } else if (code === 'au') {
-      setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=193455&page=${page}&sort_by=vote_count.desc`
-      );
-    } else if (code === 'ca') {
-      setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1329&page=${page}&sort_by=vote_count.desc`
-      );
-    } else if (code === 'ed') {
-      setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=392&vote_count.lte=5340&page=${page}&sort_by=vote_count.desc`
-      );
-    } else if (code === 'ur') {
-      setApiEndpoint(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=7005&vote_count.lte=4500&page=${page}&sort_by=vote_count.desc`
-      );
+    if (!isStart) {
+      if (code === 'sg') {
+        setApiEndpoint(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=4224&page=${page}&sort_by=vote_count.desc`
+        );
+      } else if (code === 'tw') {
+        setApiEndpoint(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=9322&page=${page}&sort_by=vote_count.desc`
+        );
+      } else if (code === 'hw') {
+        setApiEndpoint(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_keywords=235363&page=${page}&sort_by=release_date.desc`
+        );
+      } else if (code === 'hk') {
+        setApiEndpoint(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&page=${page}&sort_by=vote_count.desc`
+        );
+      } else if (code === 'au') {
+        setApiEndpoint(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=193455&page=${page}&sort_by=vote_count.desc`
+        );
+      } else if (code === 'ca') {
+        setApiEndpoint(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1329&page=${page}&sort_by=vote_count.desc`
+        );
+      } else if (code === 'ed') {
+        setApiEndpoint(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=392&vote_count.lte=5340&page=${page}&sort_by=vote_count.desc`
+        );
+      } else if (code === 'ur') {
+        setApiEndpoint(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=7005&vote_count.lte=4500&page=${page}&sort_by=vote_count.desc`
+        );
+      } else {
+        code &&
+          setApiEndpoint(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&vote_count.lte=715&page=${page}&sort_by=vote_count.desc`
+          );
+      }
     } else {
       code &&
         setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&vote_count.lte=715&page=${page}&sort_by=vote_count.desc`
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&page=${page}&sort_by=vote_count.desc`
         );
     }
     apiEndpoint &&
       axios
         .get(apiEndpoint)
         .then((res) => {
-          !totalPages && setTotalPages(+res.data['total_pages']);
+          setTotalPages(+res.data['total_pages']);
           if (res.data.results.length) {
             setMovies(res.data.results);
           } else {
@@ -63,7 +71,7 @@ const Test = () => {
           }
         })
         .catch((err) => console.log(err));
-  }, [apiEndpoint, page]);
+  }, [isStart, apiEndpoint, page]);
   return (
     <>
       <h3>{country}</h3>
@@ -144,11 +152,26 @@ const Test = () => {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          gap: '8em',
+          gap: '1.4em',
           marginTop: '10px',
         }}
         className="nav-buttons"
       >
+        <button
+          onClick={() => {
+            {
+              setPage(1);
+              setIsStart(true);
+              window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth',
+              });
+            }
+          }}
+        >
+          {'<<'}
+        </button>
         {page !== 1 && (
           <button
             onClick={() => {
@@ -165,6 +188,9 @@ const Test = () => {
             {'<'}
           </button>
         )}
+        <p>
+          {page}/{totalPages ? totalPages : '...'}
+        </p>
         {page !== totalPages && (
           <button
             onClick={() => {
@@ -179,6 +205,22 @@ const Test = () => {
             {'>'}
           </button>
         )}
+        <button
+          style={{ background: 'lightblue' }}
+          onClick={() => {
+            {
+              setPage(1);
+              setIsStart(false);
+              window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth',
+              });
+            }
+          }}
+        >
+          &#x2693;
+        </button>
       </div>
     </>
   );
