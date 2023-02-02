@@ -247,12 +247,14 @@ const MovieViewer = () => {
                 left: 0,
                 behavior: 'smooth',
               });
-              if (!isEdit) {
-                setPage(page + 1);
-              } else {
-                setIsEdit(false);
-                setPage(pendingPage);
-              }
+              setTimeout(() => {
+                if (!isEdit) {
+                  setPage(page + 1);
+                } else {
+                  setPage(pendingPage);
+                  setIsEdit(false);
+                }
+              }, 100);
             }}
           >
             {!isEdit ? '>' : <div style={{ fontSize: '15px' }}>&#x2713;</div>}
