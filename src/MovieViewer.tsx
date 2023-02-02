@@ -25,7 +25,7 @@ const MovieViewer = () => {
         setApiEndpoint(
           `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=9322&page=${page}&sort_by=vote_count.desc`
         );
-      } else if (language === 'hw') {
+      } else if (country === 'Hawaii') {
         setApiEndpoint(
           `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_keywords=235363&page=${page}&sort_by=release_date.desc`
         );
@@ -41,11 +41,11 @@ const MovieViewer = () => {
         setApiEndpoint(
           `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1329&page=${page}&sort_by=vote_count.desc`
         );
-      } else if (code === 'ed') {
+      } else if (country === 'England') {
         setApiEndpoint(
           `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=392&vote_count.lte=5340&page=${page}&sort_by=vote_count.desc`
         );
-      } else if (code === 'ur') {
+      } else if (country === 'Northern Ireland') {
         setApiEndpoint(
           `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=7005&vote_count.lte=4500&page=${page}&sort_by=vote_count.desc`
         );
@@ -56,7 +56,7 @@ const MovieViewer = () => {
           );
       }
     } else {
-      if (language === 'hw') {
+      if (country === 'Hawaii') {
         code &&
           setApiEndpoint(
             `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1668&page=${page}&sort_by=release_date.desc`
@@ -242,21 +242,16 @@ const MovieViewer = () => {
           <button
             style={{ background: isEdit ? '#4BB543' : 'blue' }}
             onClick={() => {
+              window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth',
+              });
               if (!isEdit) {
                 setPage(page + 1);
-                window.scroll({
-                  top: 0,
-                  left: 0,
-                  behavior: 'smooth',
-                });
               } else {
                 setIsEdit(false);
                 setPage(pendingPage);
-                window.scroll({
-                  top: 0,
-                  left: 0,
-                  behavior: 'smooth',
-                });
               }
             }}
           >

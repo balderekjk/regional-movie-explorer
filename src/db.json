@@ -555,7 +555,7 @@
   {
     "name": "Hawaii",
     "code": "us",
-    "language": [{ "name": "Hawaiian", "code": "hw" }],
+    "language": [{ "name": "English", "code": "en" }],
     "latitude": 19.9,
     "longitude": -145.6
   },
@@ -1436,14 +1436,14 @@
   },
   {
     "name": "England",
-    "code": "ed",
+    "code": "gb",
     "language": [{ "name": "English", "code": "en" }],
     "latitude": 52.4,
     "longitude": -1.2
   },
   {
     "name": "Northern Ireland",
-    "code": "ur",
+    "code": "gb",
     "language": [{ "name": "English", "code": "en" }],
     "latitude": 54.8,
     "longitude": -6.5
