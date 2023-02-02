@@ -68,6 +68,11 @@ const MovieViewer = () => {
           );
       }
     }
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     apiEndpoint &&
       axios
         .get(apiEndpoint)
@@ -178,11 +183,6 @@ const MovieViewer = () => {
             {
               setPage(1);
               setIsStart(true);
-              window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth',
-              });
             }
           }}
         >
@@ -193,11 +193,6 @@ const MovieViewer = () => {
             onClick={() => {
               {
                 setPage(page - 1);
-                window.scroll({
-                  top: 0,
-                  left: 0,
-                  behavior: 'smooth',
-                });
               }
             }}
           >
@@ -212,11 +207,6 @@ const MovieViewer = () => {
                 if (e.key === 'Enter') {
                   setPage(pendingPage);
                   setIsEdit(false);
-                  window.scroll({
-                    top: 0,
-                    left: 0,
-                    behavior: 'smooth',
-                  });
                 }
               }}
               type="number"
@@ -242,19 +232,12 @@ const MovieViewer = () => {
           <button
             style={{ background: isEdit ? '#4BB543' : 'blue' }}
             onClick={() => {
-              window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth',
-              });
-              setTimeout(() => {
-                if (!isEdit) {
-                  setPage(page + 1);
-                } else {
-                  setPage(pendingPage);
-                  setIsEdit(false);
-                }
-              }, 100);
+              if (!isEdit) {
+                setPage(page + 1);
+              } else {
+                setPage(pendingPage);
+                setIsEdit(false);
+              }
             }}
           >
             {!isEdit ? '>' : <div style={{ fontSize: '15px' }}>&#x2713;</div>}
@@ -267,11 +250,6 @@ const MovieViewer = () => {
               if (!isEdit) {
                 setPage(1);
                 setIsStart(false);
-                window.scroll({
-                  top: 0,
-                  left: 0,
-                  behavior: 'smooth',
-                });
               } else {
                 setIsEdit(false);
               }
