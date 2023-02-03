@@ -222,6 +222,7 @@ const MovieViewer = () => {
           <button
             style={{ background: '#4BB543' }}
             onClick={() => {
+              window.scrollTo(0, 0);
               navigate(
                 `/${country}/${code}/${language}/${filter}/${pendingPage}`
               );
