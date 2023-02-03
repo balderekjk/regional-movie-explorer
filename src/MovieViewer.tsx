@@ -65,6 +65,7 @@ const MovieViewer = () => {
         }
       })
       .catch((err) => console.log(err.response.data.errors));
+    setIsEdit(false);
   }, [navigate]);
   return (
     <>
@@ -186,7 +187,6 @@ const MovieViewer = () => {
                   navigate(
                     `/${country}/${code}/${language}/${filter}/${newPage}`
                   );
-                  setIsEdit(false);
                 }
               }}
               type="number"
@@ -221,7 +221,6 @@ const MovieViewer = () => {
                 navigate(
                   `/${country}/${code}/${language}/${filter}/${pendingPage}`
                 );
-                setIsEdit(false);
               }
             }}
           >
