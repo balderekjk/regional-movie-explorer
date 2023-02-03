@@ -95,7 +95,7 @@ const MovieViewer = () => {
       <h3>{country}</h3>
       <p>Touch a poster image to find watch options</p>
       <p>The {'<<'} button lifts language and keyword filters</p>
-      <p>The &#x2693; button resets to initial {pendingPage} filters</p>
+      <p>The &#x2693; button resets to initial filters</p>
       <p></p>
       <div className="movie-grid">
         {movies.length
