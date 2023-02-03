@@ -16,7 +16,7 @@ const MovieViewer = () => {
   let endpoint = '';
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
     if (filter === 'filtered') {
       if (code === 'sg') {
         endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=4224&page=${pgnum}&sort_by=vote_count.desc`;
@@ -208,27 +208,23 @@ const MovieViewer = () => {
             '...'
           )}
         </div>
-        {pgnum && +pgnum < totalPages && !isEdit ? (
+        {pgnum && +pgnum < totalPages && (
           <button
-            style={{ background: 'blue' }}
+            style={{ background: isEdit ? '#4BB543' : 'blue' }}
             onClick={() => {
-              let newPage = pgnum && +pgnum + 1;
-              navigate(`/${country}/${code}/${language}/${filter}/${newPage}`);
+              if (!isEdit) {
+                let newPage = pgnum && +pgnum + 1;
+                navigate(
+                  `/${country}/${code}/${language}/${filter}/${newPage}`
+                );
+              } else {
+                navigate(
+                  `/${country}/${code}/${language}/${filter}/${pendingPage}`
+                );
+              }
             }}
           >
-            {'>'}
-          </button>
-        ) : (
-          <button
-            style={{ background: '#4BB543' }}
-            onClick={() => {
-              window.scrollTo(0, 0);
-              navigate(
-                `/${country}/${code}/${language}/${filter}/${pendingPage}`
-              );
-            }}
-          >
-            {<p style={{ fontSize: '15px' }}>&#x2713;</p>}
+            {!isEdit ? '>' : <p style={{ fontSize: '15px' }}>&#x2713;</p>}
           </button>
         )}
         <button
