@@ -15,7 +15,10 @@ function App() {
       </h2>
       <Routes>
         <Route path="/" element={<MapChart />} />
-        <Route path=":country/:code/:language" element={<MovieViewer />} />
+        <Route
+          path=":country/:code/:language/:filter/:pgnum"
+          element={<MovieViewer />}
+        />
       </Routes>
     </div>
   );

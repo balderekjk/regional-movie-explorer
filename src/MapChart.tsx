@@ -41,7 +41,7 @@ export default function MapChart() {
                 (country) => country.code === selectCountry
               );
               navigate(
-                `/${found[0].name}/${found[0].code}/${found[0].language[0].code}`
+                `/${found[0].name}/${found[0].code}/${found[0].language[0].code}/filtered/1`
               );
             }}
             style={{ marginLeft: '3px' }}
@@ -61,7 +61,7 @@ export default function MapChart() {
                   );
                   found.length &&
                     navigate(
-                      `/${found[0].name}/${found[0].code}/${found[0].language[0].code}`
+                      `/${found[0].name}/${found[0].code}/${found[0].language[0].code}/filtered/1`
                     );
                 }}
                 key={geo.rsmKey}
@@ -83,7 +83,7 @@ export default function MapChart() {
             >
               <text textAnchor="middle">
                 <Link
-                  to={`/${country.name}/${country.code}/${country.language[0].code}`}
+                  to={`/${country.name}/${country.code}/${country.language[0].code}/filtered/1`}
                 >
                   {country.name}
                 </Link>

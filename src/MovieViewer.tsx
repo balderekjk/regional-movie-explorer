@@ -1,102 +1,77 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import poster from './assets/no_poster.jpg';
 import PercentBar from './PercentBar';
 
 const MovieViewer = () => {
+  let { country, code, language, filter, pgnum } = useParams();
   const [movies, setMovies] = useState<any[]>([]);
   const [status, setStatus] = useState('Loading...');
   const [totalPages, setTotalPages] = useState(0);
-  const [page, setPage] = useState(1);
   const [pendingPage, setPendingPage] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
-  const [isStart, setIsStart] = useState(false);
-  const [apiEndpoint, setApiEndpoint] = useState('');
-  const { country, code, language } = useParams();
+  const navigate = useNavigate();
   const key = import.meta.env.VITE_TMDB_API_KEY;
+  let endpoint = '';
+
   useEffect(() => {
-    if (!isStart) {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    if (filter === 'filtered') {
       if (code === 'sg') {
-        setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=4224&page=${page}&sort_by=vote_count.desc`
-        );
+        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=4224&page=${pgnum}&sort_by=vote_count.desc`;
       } else if (code === 'tw') {
-        setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=9322&page=${page}&sort_by=vote_count.desc`
-        );
+        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=9322&page=${pgnum}&sort_by=vote_count.desc`;
       } else if (country === 'Hawaii') {
-        setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_keywords=235363&page=${page}&sort_by=release_date.desc`
-        );
+        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_keywords=235363&page=${pgnum}&sort_by=release_date.desc`;
       } else if (code === 'hk') {
-        setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&page=${page}&sort_by=vote_count.desc`
-        );
+        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&page=${pgnum}&sort_by=vote_count.desc`;
       } else if (code === 'au') {
-        setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=193455&page=${page}&sort_by=vote_count.desc`
-        );
+        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=193455&page=${pgnum}&sort_by=vote_count.desc`;
       } else if (code === 'ca') {
-        setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1329&page=${page}&sort_by=vote_count.desc`
-        );
+        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1329&page=${pgnum}&sort_by=vote_count.desc`;
       } else if (country === 'England') {
-        setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=392&vote_count.lte=5340&page=${page}&sort_by=vote_count.desc`
-        );
+        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=392&vote_count.lte=5340&page=${pgnum}&sort_by=vote_count.desc`;
       } else if (country === 'Northern Ireland') {
-        setApiEndpoint(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=7005&vote_count.lte=4500&page=${page}&sort_by=vote_count.desc`
-        );
+        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=7005&vote_count.lte=4500&page=${pgnum}&sort_by=vote_count.desc`;
       } else {
-        code &&
-          setApiEndpoint(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&vote_count.lte=715&page=${page}&sort_by=vote_count.desc`
-          );
+        if (code) {
+          endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_original_language=${language}&vote_count.lte=715&page=${pgnum}&sort_by=vote_count.desc`;
+        }
       }
-    } else {
+    } else if (filter === 'all') {
       if (country === 'Hawaii') {
-        code &&
-          setApiEndpoint(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1668&page=${page}&sort_by=release_date.desc`
-          );
+        if (code) {
+          endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1668&page=${pgnum}&sort_by=release_date.desc`;
+        }
       } else {
-        code &&
-          setApiEndpoint(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&page=${page}&sort_by=vote_count.desc`
-          );
+        if (code) {
+          endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&page=${pgnum}&sort_by=vote_count.desc`;
+        }
       }
     }
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
-    apiEndpoint &&
-      axios
-        .get(apiEndpoint)
-        .then((res) => {
-          if (+res.data['total_pages'] > 500) {
-            setTotalPages(500);
-          } else {
-            setTotalPages(+res.data['total_pages']);
-          }
-          if (res.data.results.length) {
-            setMovies(res.data.results);
-          } else {
-            setStatus('No movies...');
-          }
-        })
-        .catch((err) => console.log(err.response.data.errors));
-  }, [isStart, apiEndpoint, page]);
+    axios
+      .get(endpoint)
+      .then((res) => {
+        if (+res.data['total_pages'] > 500) {
+          setTotalPages(500);
+        } else {
+          setTotalPages(+res.data['total_pages']);
+        }
+        if (res.data.results.length) {
+          setMovies(res.data.results);
+        } else {
+          setStatus('No movies...');
+        }
+      })
+      .catch((err) => console.log(err.response.data.errors));
+  }, [navigate]);
   return (
     <>
       <h3>{country}</h3>
       <p>Touch a poster image to find watch options</p>
-      <p>The {'<<'} button lifts language and keyword filters</p>
+      <p>The {'<<'} button lifts language/keyword filters</p>
       <p>The &#x2693; button resets to initial filters</p>
-      <p></p>
       <div className="movie-grid">
         {movies.length
           ? movies.map((movie) => {
@@ -181,66 +156,76 @@ const MovieViewer = () => {
         <button
           onClick={() => {
             {
-              setPage(1);
-              setIsStart(true);
+              navigate(`/${country}/${code}/${language}/all/1`);
             }
           }}
         >
           {'<<'}
         </button>
-        {page !== 1 && (
+        {pgnum && +pgnum !== 1 && (
           <button
             onClick={() => {
               {
-                setPage(page - 1);
+                let newPage = pgnum && +pgnum - 1;
+                navigate(
+                  `/${country}/${code}/${language}/${filter}/${newPage}`
+                );
               }
             }}
           >
             {'<'}
           </button>
         )}
-        <p>
+        <div>
           {isEdit ? (
             <input
               onChange={(e) => setPendingPage(+e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  setPage(pendingPage);
+                  let newPage = pendingPage;
+                  navigate(
+                    `/${country}/${code}/${language}/${filter}/${newPage}`
+                  );
                   setIsEdit(false);
                 }
               }}
               type="number"
               style={{ width: '42px' }}
-              defaultValue={page}
+              defaultValue={pgnum}
               autoFocus
             />
           ) : (
-            <div className="pseudo-input" onClick={() => setIsEdit(true)}>
-              {page}
-            </div>
+            <p className="pseudo-input" onClick={() => setIsEdit(true)}>
+              {pgnum}
+            </p>
           )}{' '}
           /
           {totalPages ? (
-            <div style={{ display: 'inline-block', fontSize: '15px' }}>
+            <p style={{ display: 'inline-block', fontSize: '15px' }}>
               {totalPages}
-            </div>
+            </p>
           ) : (
             '...'
           )}
-        </p>
-        {page < totalPages && (
+        </div>
+        {pgnum && +pgnum < totalPages && (
           <button
             style={{ background: isEdit ? '#4BB543' : 'blue' }}
             onClick={() => {
               if (!isEdit) {
-                setPage(page + 1);
+                let newPage = pgnum && +pgnum + 1;
+                navigate(
+                  `/${country}/${code}/${language}/${filter}/${newPage}`
+                );
               } else {
-                setPage(pendingPage);
+                navigate(
+                  `/${country}/${code}/${language}/${filter}/${pendingPage}`
+                );
                 setIsEdit(false);
               }
             }}
           >
-            {!isEdit ? '>' : <div style={{ fontSize: '15px' }}>&#x2713;</div>}
+            {!isEdit ? '>' : <p style={{ fontSize: '15px' }}>&#x2713;</p>}
           </button>
         )}
         <button
@@ -248,20 +233,15 @@ const MovieViewer = () => {
           onClick={() => {
             {
               if (!isEdit) {
-                setPage(1);
-                setIsStart(false);
+                let newPage = 1;
+                navigate(`/${country}/${code}/${language}/filtered/${newPage}`);
               } else {
-                setPendingPage(page);
                 setIsEdit(false);
               }
             }
           }}
         >
-          {!isEdit ? (
-            <>&#x2693;</>
-          ) : (
-            <div style={{ padding: '2px 7px' }}>X</div>
-          )}
+          {!isEdit ? <>&#x2693;</> : <p style={{ padding: '2px 7px' }}>X</p>}
         </button>
       </div>
     </>
