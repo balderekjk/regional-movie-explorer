@@ -184,7 +184,7 @@
   {
     "name": "Botswana",
     "code": "bw",
-    "language": [{ "name": "Setswana", "code": "tn" }],
+    "language": [{ "name": "English", "code": "en" }],
     "latitude": -22,
     "longitude": 24
   },
@@ -383,6 +383,13 @@
     "language": [{ "name": "Spanish", "code": "es" }],
     "latitude": -2,
     "longitude": -77.5
+  },
+  {
+    "name": "England",
+    "code": "gb",
+    "language": [{ "name": "English", "code": "en" }],
+    "latitude": 52.4,
+    "longitude": -1.2
   },
   {
     "name": "Egypt",
@@ -987,6 +994,13 @@
     "longitude": 154.5
   },
   {
+    "name": "Northern Ireland",
+    "code": "gb",
+    "language": [{ "name": "English", "code": "en" }],
+    "latitude": 54.8,
+    "longitude": -6.5
+  },
+  {
     "name": "North Macedonia",
     "code": "mk",
     "language": [{ "name": "Macedonian", "code": "mk" }],
@@ -1188,6 +1202,13 @@
     "language": [{ "name": "Arabic", "code": "ar" }],
     "latitude": 25,
     "longitude": 45
+  },
+  {
+    "name": "Scotland",
+    "code": "gb",
+    "language": [{ "name": "Scottish Gaelic", "code": "gd" }],
+    "latitude": 56.5,
+    "longitude": -4.2
   },
   {
     "name": "Senegal",
@@ -1435,34 +1456,6 @@
     "longitude": 54
   },
   {
-    "name": "England",
-    "code": "gb",
-    "language": [{ "name": "English", "code": "en" }],
-    "latitude": 52.4,
-    "longitude": -1.2
-  },
-  {
-    "name": "Northern Ireland",
-    "code": "gb",
-    "language": [{ "name": "English", "code": "en" }],
-    "latitude": 54.8,
-    "longitude": -6.5
-  },
-  {
-    "name": "Scotland",
-    "code": "gb",
-    "language": [{ "name": "Scottish Gaelic", "code": "gd" }],
-    "latitude": 56.5,
-    "longitude": -4.2
-  },
-  {
-    "name": "Wales",
-    "code": "gb",
-    "language": [{ "name": "Welsh", "code": "cy" }],
-    "latitude": 52.1,
-    "longitude": -3.8
-  },
-  {
     "name": "United States of America",
     "code": "us",
     "language": [{ "name": "English", "code": "en" }],
@@ -1531,6 +1524,13 @@
     "language": [{ "name": "English", "code": "en" }],
     "latitude": 18.7,
     "longitude": -64.9
+  },
+  {
+    "name": "Wales",
+    "code": "gb",
+    "language": [{ "name": "Welsh", "code": "cy" }],
+    "latitude": 52.1,
+    "longitude": -3.8
   },
   {
     "name": "Wallis and Futuna",
