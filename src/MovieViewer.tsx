@@ -208,23 +208,26 @@ const MovieViewer = () => {
             '...'
           )}
         </div>
-        {pgnum && +pgnum < totalPages && (
+        {pgnum && +pgnum < totalPages && !isEdit ? (
           <button
-            style={{ background: isEdit ? '#4BB543' : 'blue' }}
+            style={{ background: 'blue' }}
             onClick={() => {
-              if (!isEdit) {
-                let newPage = pgnum && +pgnum + 1;
-                navigate(
-                  `/${country}/${code}/${language}/${filter}/${newPage}`
-                );
-              } else {
-                navigate(
-                  `/${country}/${code}/${language}/${filter}/${pendingPage}`
-                );
-              }
+              let newPage = pgnum && +pgnum + 1;
+              navigate(`/${country}/${code}/${language}/${filter}/${newPage}`);
             }}
           >
-            {!isEdit ? '>' : <p style={{ fontSize: '15px' }}>&#x2713;</p>}
+            {'>'}
+          </button>
+        ) : (
+          <button
+            style={{ background: '#4BB543' }}
+            onClick={() => {
+              navigate(
+                `/${country}/${code}/${language}/${filter}/${pendingPage}`
+              );
+            }}
+          >
+            {<p style={{ fontSize: '15px' }}>&#x2713;</p>}
           </button>
         )}
         <button
