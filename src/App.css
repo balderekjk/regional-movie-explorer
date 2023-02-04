@@ -13,7 +13,7 @@ body {
 .App {
   width: fit-content;
   background: linear-gradient(to bottom, skyblue, rgb(255, 255, 169));
-  min-height: 100vh;
+  height: fit-content;
   text-align: center;
   padding-bottom: 1em;
 }
@@ -63,7 +63,6 @@ input[type='number']::-webkit-outer-spin-button {
   position: -o-sticky;
   position: -ms-sticky;
   position: sticky;
-  right: 0;
   left: 0;
   overflow-x: scroll;
 }

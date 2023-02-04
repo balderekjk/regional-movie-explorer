@@ -16,7 +16,7 @@ export default function MapChart() {
   const [selectCountry, setSelectCountry] = useState('af');
   return (
     <>
-      <div className="sticky-x" style={{ height: 'fit-content' }}>
+      <div className="sticky-x">
         <p>Swipe/scroll to the right to see full map</p>
         <p>Click a region/name. Zoom-in helps...</p>
         <p>But, Zoom-out necessary on next page.</p>
