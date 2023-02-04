@@ -64,7 +64,6 @@ input[type='number']::-webkit-outer-spin-button {
   position: -ms-sticky;
   position: sticky;
   left: 0;
-  overflow-x: scroll;
 }
 
 .sticky-x::-webkit-scrollbar {
