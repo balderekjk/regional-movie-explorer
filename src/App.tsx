@@ -9,7 +9,13 @@ function App() {
     <div className="App">
       <h2
         onClick={() => navigate('/')}
-        style={{ width: '100vw', cursor: 'pointer' }}
+        style={{
+          cursor: 'pointer',
+          textShadow: '0px 1px 2px forestgreen',
+          color: 'darkgreen',
+          paddingBottom: '2px',
+        }}
+        className="sticky-x"
       >
         Regional Movie Explorer
       </h2>

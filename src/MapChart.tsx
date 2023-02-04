@@ -16,7 +16,7 @@ export default function MapChart() {
   const [selectCountry, setSelectCountry] = useState('af');
   return (
     <>
-      <div style={{ width: '100vw' }}>
+      <div className="sticky-x" style={{ height: 'fit-content' }}>
         <p>Swipe/scroll to the right to see full map</p>
         <p>Click a region/name. Zoom-in helps...</p>
         <p>But, Zoom-out necessary on next page.</p>
@@ -29,7 +29,7 @@ export default function MapChart() {
           >
             {countries.map((country) => {
               return (
-                <option key={country.code} value={country.code}>
+                <option key={country.name} value={country.code}>
                   {country.name}
                 </option>
               );
@@ -50,7 +50,7 @@ export default function MapChart() {
           </button>
         </div>
       </div>
-      <ComposableMap>
+      <ComposableMap style={{ margin: '-80px 20px 0px 20px' }}>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => (
@@ -78,7 +78,7 @@ export default function MapChart() {
         {countries.map((country) => {
           return (
             <Marker
-              key={country.code}
+              key={country.name}
               coordinates={[country.longitude, country.latitude]}
             >
               <text textAnchor="middle">

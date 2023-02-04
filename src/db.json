@@ -686,20 +686,6 @@
     "longitude": 173
   },
   {
-    "name": "Korea, North",
-    "code": "kp",
-    "language": [{ "name": "Korean", "code": "ko" }],
-    "latitude": 40,
-    "longitude": 127
-  },
-  {
-    "name": "Korea, South",
-    "code": "kr",
-    "language": [{ "name": "Korean", "code": "ko" }],
-    "latitude": 37,
-    "longitude": 127.5
-  },
-  {
     "name": "Kosovo",
     "code": "xk",
     "language": [{ "name": "Albanian", "code": "sq" }],
@@ -1001,6 +987,13 @@
     "longitude": -6.5
   },
   {
+    "name": "North Korea",
+    "code": "kp",
+    "language": [{ "name": "Korean", "code": "ko" }],
+    "latitude": 40,
+    "longitude": 127
+  },
+  {
     "name": "North Macedonia",
     "code": "mk",
     "language": [{ "name": "Macedonian", "code": "mk" }],
@@ -1060,7 +1053,7 @@
     "name": "Papua New Guinea",
     "code": "pg",
     "language": [{ "name": "English", "code": "en" }],
-    "latitude": -6,
+    "latitude": -7,
     "longitude": 137
   },
   {
@@ -1263,7 +1256,7 @@
     "name": "Solomon Islands",
     "code": "sb",
     "language": [{ "name": "English", "code": "en" }],
-    "latitude": -8,
+    "latitude": -10,
     "longitude": 138
   },
   {
@@ -1279,6 +1272,13 @@
     "language": [{ "name": "Zulu", "code": "zu" }],
     "latitude": -29,
     "longitude": 24
+  },
+  {
+    "name": "South Korea",
+    "code": "kr",
+    "language": [{ "name": "Korean", "code": "ko" }],
+    "latitude": 37,
+    "longitude": 127.5
   },
   {
     "name": "South Sudan",
