@@ -31,7 +31,7 @@ const MovieViewer = () => {
       } else if (code === 'ca') {
         endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${code.toUpperCase()}&with_keywords=1329&page=${pgnum}&sort_by=vote_count.desc`;
       } else if (country === 'England') {
-        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=392&vote_count.lte=5340&page=${pgnum}&sort_by=vote_count.desc`;
+        endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=212&vote_count.lte=5340&vote_count.lte=2165&page=${pgnum}&sort_by=vote_count.desc`;
       } else if (country === 'Northern Ireland') {
         endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=GB&with_keywords=7005&vote_count.lte=4500&page=${pgnum}&sort_by=vote_count.desc`;
       } else {
