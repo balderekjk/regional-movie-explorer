@@ -56,6 +56,7 @@ export default function MapChart() {
             geographies.map((geo) => (
               <Geography
                 onClick={() => {
+                  console.log(geo.properties.name);
                   let found = countries.filter(
                     (country) => country.name === geo.properties.name
                   );

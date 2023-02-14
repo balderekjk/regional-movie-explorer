@@ -406,7 +406,7 @@
     "longitude": -88.9
   },
   {
-    "name": "Equitarial Guinea",
+    "name": "Equitorial Guinea",
     "code": "gq",
     "language": [{ "name": "Spanish", "code": "es" }],
     "latitude": 2,
@@ -539,7 +539,7 @@
     "longitude": -10
   },
   {
-    "name": "Guinea-Bissau",
+    "name": "Guinea Bissau",
     "code": "gw",
     "language": [{ "name": "Portuguese", "code": "pt" }],
     "latitude": 12,
@@ -1351,7 +1351,7 @@
     "longitude": 71
   },
   {
-    "name": "Tanzania",
+    "name": "United Republic of Tanzania",
     "code": "tz",
     "language": [{ "name": "Swahili", "code": "sw" }],
     "latitude": -6,
@@ -1509,7 +1509,7 @@
     "code": "vn",
     "language": [{ "name": "Vietnamese", "code": "vi" }],
     "latitude": 16,
-    "longitude": 106
+    "longitude": 107.2
   },
   {
     "name": "Virgin Islands, British",
