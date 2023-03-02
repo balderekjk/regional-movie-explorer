@@ -919,7 +919,7 @@
   {
     "name": "Namibia",
     "code": "nr",
-    "language": [{ "name": "Nauruan", "code": "na" }],
+    "language": [{ "name": "Nauruan", "code": "en" }],
     "latitude": -22,
     "longitude": 17
   },

@@ -11,9 +11,11 @@ body {
 }
 
 .App {
-  width: fit-content;
+  min-width: fit-content;
+  width: 100%;
   background: linear-gradient(to bottom, skyblue, rgb(255, 255, 169));
   height: fit-content;
+  min-height: 100vh;
   text-align: center;
   padding-bottom: 1em;
 }
@@ -56,7 +58,8 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .sticky-x {
-  width: 100vw;
+  max-width: 100vw;
+  width: 100%;
   display: block;
   position: -webkit-sticky;
   position: -moz-sticky;
